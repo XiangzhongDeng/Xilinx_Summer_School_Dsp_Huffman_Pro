@@ -1,0 +1,266 @@
+
+
+================================================================
+== Synthesis Summary Report of 'huffman'
+================================================================
++ General Information: 
+    * Date:           Wed Aug 10 11:17:26 2022
+    * Version:        2021.2 (Build 3367213 on Tue Oct 19 02:48:09 MDT 2021)
+    * Project:        huffman
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +----------------------------------------+------+------+---------+-----------+----------+---------+------+----------+---------+----+------------+-----------+-----+
+    |                 Modules                | Issue|      | Latency |  Latency  | Iteration|         | Trip |          |         |    |            |           |     |
+    |                 & Loops                | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined|  BRAM   | DSP|     FF     |    LUT    | URAM|
+    +----------------------------------------+------+------+---------+-----------+----------+---------+------+----------+---------+----+------------+-----------+-----+
+    |+ huffman                               |     -|  0.25|        -|          -|         -|        -|     -|        no|  20 (7%)|   -|   2047 (1%)|  5120 (9%)|    -|
+    | + huffman_Pipeline_VITIS_LOOP_530_1    |     -|  2.39|      258|  2.580e+03|         -|      258|     -|        no|        -|   -|    11 (~0%)|   74 (~0%)|    -|
+    |  o VITIS_LOOP_530_1                    |     -|  7.30|      256|  2.560e+03|         1|        1|   256|       yes|        -|   -|           -|          -|    -|
+    | + filter                               |     -|  0.79|      259|  2.590e+03|         -|      259|     -|        no|        -|   -|    67 (~0%)|  112 (~0%)|    -|
+    |  o VITIS_LOOP_124_1                    |     -|  7.30|      257|  2.570e+03|         3|        1|   256|       yes|        -|   -|           -|          -|    -|
+    | + huffman_Pipeline_init_histogram      |     -|  3.49|       66|    660.000|         -|       66|     -|        no|        -|   -|     9 (~0%)|   52 (~0%)|    -|
+    |  o init_histogram                      |     -|  7.30|       64|    640.000|         1|        1|    64|       yes|        -|   -|           -|          -|    -|
+    | + sort                                 |     -|  0.79|     4756|  4.756e+04|         -|     4756|     -|        no|   5 (1%)|   -|  1001 (~0%)|  1728 (3%)|    -|
+    |  + sort_Pipeline_copy_in_to_sorting    |     -|  0.79|      258|  2.580e+03|         -|      258|     -|        no|        -|   -|    21 (~0%)|   63 (~0%)|    -|
+    |   o copy_in_to_sorting                 |     -|  7.30|      256|  2.560e+03|         2|        1|   256|       yes|        -|   -|           -|          -|    -|
+    |  o radix_sort                          |     -|  7.30|     4496|  4.496e+04|       562|        -|     8|        no|        -|   -|           -|          -|    -|
+    |   + sort_Pipeline_init_histogram       |     -|  3.93|       18|    180.000|         -|       18|     -|        no|        -|   -|   167 (~0%)|  194 (~0%)|    -|
+    |    o init_histogram                    |     -|  7.30|       16|    160.000|         1|        1|    16|       yes|        -|   -|           -|          -|    -|
+    |   + sort_Pipeline_compute_histogram    |     -|  0.79|      260|  2.600e+03|         -|      260|     -|        no|        -|   -|   282 (~0%)|  422 (~0%)|    -|
+    |    o compute_histogram                 |     -|  7.30|      258|  2.580e+03|         4|        1|   256|       yes|        -|   -|           -|          -|    -|
+    |   + sort_Pipeline_find_digit_location  |     -|  1.92|       17|    170.000|         -|       17|     -|        no|        -|   -|   158 (~0%)|  360 (~0%)|    -|
+    |    o find_digit_location               |     -|  7.30|       15|    150.000|         1|        1|    15|       yes|        -|   -|           -|          -|    -|
+    |   + sort_Pipeline_re_sort              |     -|  0.79|      259|  2.590e+03|         -|      259|     -|        no|        -|   -|    37 (~0%)|  360 (~0%)|    -|
+    |    o re_sort                           |     -|  7.30|      257|  2.570e+03|         3|        1|   256|       yes|        -|   -|           -|          -|    -|
+    | + huffman_Pipeline_copy_sorted         |     -|  0.79|      258|  2.580e+03|         -|      258|     -|        no|        -|   -|    21 (~0%)|   63 (~0%)|    -|
+    |  o copy_sorted                         |     -|  7.30|      256|  2.560e+03|         2|        1|   256|       yes|        -|   -|           -|          -|    -|
+    | + huffman_Pipeline_VITIS_LOOP_27_1     |     -|  0.59|     1277|  1.277e+04|         -|     1277|     -|        no|  1 (~0%)|   -|   309 (~0%)|   539 (1%)|    -|
+    |  o VITIS_LOOP_27_1                     |     -|  7.30|     1275|  1.275e+04|         5|        5|   255|       yes|        -|   -|           -|          -|    -|
+    | + huffman_Pipeline_traverse_tree       |     -|  0.63|        -|          -|         -|        -|     -|        no|        -|   -|   120 (~0%)|  235 (~0%)|    -|
+    |  o traverse_tree                       |     -|  7.30|        -|          -|         5|        3|     -|       yes|        -|   -|           -|          -|    -|
+    | + huffman_Pipeline_copy_input          |     -|  2.66|       66|    660.000|         -|       66|     -|        no|        -|   -|    17 (~0%)|   63 (~0%)|    -|
+    |  o copy_input                          |     -|  7.30|       64|    640.000|         2|        1|    64|       yes|        -|   -|           -|          -|    -|
+    | + huffman_Pipeline_copy_output         |     -|  2.66|       66|    660.000|         -|       66|     -|        no|        -|   -|    17 (~0%)|   63 (~0%)|    -|
+    |  o copy_output                         |     -|  7.30|       64|    640.000|         2|        1|    64|       yes|        -|   -|           -|          -|    -|
+    | + huffman_Pipeline_init_bits           |     -|  2.39|      258|  2.580e+03|         -|      258|     -|        no|        -|   -|    11 (~0%)|   52 (~0%)|    -|
+    |  o init_bits                           |     -|  7.30|      256|  2.560e+03|         1|        1|   256|       yes|        -|   -|           -|          -|    -|
+    | + huffman_Pipeline_first_codewords     |     -|  0.28|       28|    280.000|         -|       28|     -|        no|        -|   -|    38 (~0%)|  115 (~0%)|    -|
+    |  o first_codewords                     |     -|  7.30|       26|    260.000|         2|        1|    26|       yes|        -|   -|           -|          -|    -|
+    | + huffman_Pipeline_assign_codewords    |     -|  0.25|      770|  7.700e+03|         -|      770|     -|        no|        -|   -|    40 (~0%)|  410 (~0%)|    -|
+    |  o assign_codewords                    |     -|  7.30|      768|  7.680e+03|         3|        3|   256|       yes|        -|   -|           -|          -|    -|
+    | o move_nodes                           |     -|  7.30|     1512|  1.512e+04|        42|        -|    36|        no|        -|   -|           -|          -|    -|
+    |  o reorder                             |     -|  7.30|       40|    400.000|        13|        -|     3|        no|        -|   -|           -|          -|    -|
+    |   + huffman_Pipeline_VITIS_LOOP_332_1  |     -|  1.62|        5|     50.000|         -|        5|     -|        no|        -|   -|    23 (~0%)|   65 (~0%)|    -|
+    |    o VITIS_LOOP_332_1                  |    II|  7.30|        3|     30.000|         2|        2|     1|       yes|        -|   -|           -|          -|    -|
+    | o process_symbols                      |     -|  7.30|     2816|  2.816e+04|        11|        -|   256|        no|        -|   -|           -|          -|    -|
+    |  + huffman_Pipeline_VITIS_LOOP_413_1   |     -|  1.62|        7|     70.000|         -|        7|     -|        no|        -|   -|    23 (~0%)|   65 (~0%)|    -|
+    |   o VITIS_LOOP_413_1                   |    II|  7.30|        5|     50.000|         2|        2|     2|       yes|        -|   -|           -|          -|    -|
+    +----------------------------------------+------+------+---------+-----------+----------+---------+------+----------+---------+----+------------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AXIS
++------------------------------+---------------+-------+--------+--------+
+| Interface                    | Register Mode | TDATA | TREADY | TVALID |
++------------------------------+---------------+-------+--------+--------+
+| encoding                     | both          | 32    | 1      | 1      |
+| num_nonzero_symbols          | both          | 32    | 1      | 1      |
+| symbol_histogram_frequency_V | both          | 32    | 1      | 1      |
+| symbol_histogram_value_V     | both          | 16    | 1      | 1      |
++------------------------------+---------------+-------+--------+--------+
+
+* TOP LEVEL CONTROL
++-----------+--------------+----------+
+| Interface | Type         | Ports    |
++-----------+--------------+----------+
+| ap_clk    | clock        | ap_clk   |
+| ap_rst_n  | reset        | ap_rst_n |
+| ap_ctrl   | ap_ctrl_none |          |
++-----------+--------------+----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++------------------------------+-----------+--------------+
+| Argument                     | Direction | Datatype     |
++------------------------------+-----------+--------------+
+| symbol_histogram_value_V     | in        | ap_uint<10>* |
+| symbol_histogram_frequency_V | in        | ap_uint<32>* |
+| encoding                     | out       | ap_uint<32>* |
+| num_nonzero_symbols          | out       | int*         |
++------------------------------+-----------+--------------+
+
+* SW-to-HW Mapping
++------------------------------+------------------------------+-----------+
+| Argument                     | HW Interface                 | HW Type   |
++------------------------------+------------------------------+-----------+
+| symbol_histogram_value_V     | symbol_histogram_value_V     | interface |
+| symbol_histogram_frequency_V | symbol_histogram_frequency_V | interface |
+| encoding                     | encoding                     | interface |
+| num_nonzero_symbols          | num_nonzero_symbols          | interface |
++------------------------------+------------------------------+-----------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+  No burst in design
+
+================================================================
+== Bind Op Report
+================================================================
++---------------------------------------+-----+--------+----------------+-----+--------+---------+
+| Name                                  | DSP | Pragma | Variable       | Op  | Impl   | Latency |
++---------------------------------------+-----+--------+----------------+-----+--------+---------+
+| + huffman                             | 0   |        |                |     |        |         |
+|   add_ln27_fu_464_p2                  | -   |        | add_ln27       | add | fabric | 0       |
+|   add_ln256_fu_453_p2                 | -   |        | add_ln256      | add | fabric | 0       |
+|   add_ln260_fu_478_p2                 | -   |        | add_ln260      | add | fabric | 0       |
+|   add_ln318_fu_501_p2                 | -   |        | add_ln318      | add | fabric | 0       |
+|   add_ln886_fu_574_p2                 | -   |        | add_ln886      | add | fabric | 0       |
+|   ret_fu_552_p2                       | -   |        | ret            | add | fabric | 0       |
+|   add_ln885_fu_581_p2                 | -   |        | add_ln885      | add | fabric | 0       |
+|   add_ln885_1_fu_588_p2               | -   |        | add_ln885_1    | add | fabric | 0       |
+|   add_ln886_1_fu_595_p2               | -   |        | add_ln886_1    | add | fabric | 0       |
+|   j_V_4_fu_563_p2                     | -   |        | j_V_4          | add | fabric | 0       |
+|   add_ln407_fu_610_p2                 | -   |        | add_ln407      | add | fabric | 0       |
+|   count_V_3_fu_640_p2                 | -   |        | count_V_3      | add | fabric | 0       |
+|  + huffman_Pipeline_VITIS_LOOP_530_1  | 0   |        |                |     |        |         |
+|    add_ln530_fu_103_p2                | -   |        | add_ln530      | add | fabric | 0       |
+|  + filter                             | 0   |        |                |     |        |         |
+|    add_ln124_fu_116_p2                | -   |        | add_ln124      | add | fabric | 0       |
+|    j_V_6_fu_147_p2                    | -   |        | j_V_6          | add | fabric | 0       |
+|  + huffman_Pipeline_init_histogram    | 0   |        |                |     |        |         |
+|    add_ln249_fu_60_p2                 | -   |        | add_ln249      | add | fabric | 0       |
+|  + sort                               | 0   |        |                |     |        |         |
+|    shift_fu_650_p2                    | -   |        | shift          | add | fabric | 0       |
+|   + sort_Pipeline_copy_in_to_sorting  | 0   |        |                |     |        |         |
+|     add_ln165_fu_114_p2               | -   |        | add_ln165      | add | fabric | 0       |
+|   + sort_Pipeline_init_histogram      | 0   |        |                |     |        |         |
+|     add_ln178_fu_492_p2               | -   |        | add_ln178      | add | fabric | 0       |
+|   + sort_Pipeline_compute_histogram   | 0   |        |                |     |        |         |
+|     add_ln187_fu_587_p2               | -   |        | add_ln187      | add | fabric | 0       |
+|     add_ln885_fu_698_p2               | -   |        | add_ln885      | add | fabric | 0       |
+|   + sort_Pipeline_find_digit_location | 0   |        |                |     |        |         |
+|     add_ln223_fu_689_p2               | -   |        | add_ln223      | add | fabric | 0       |
+|     add_ln204_fu_774_p2               | -   |        | add_ln204      | add | fabric | 0       |
+|   + sort_Pipeline_re_sort             | 0   |        |                |     |        |         |
+|     add_ln212_fu_448_p2               | -   |        | add_ln212      | add | fabric | 0       |
+|     add_ln885_fu_572_p2               | -   |        | add_ln885      | add | fabric | 0       |
+|  + huffman_Pipeline_copy_sorted       | 0   |        |                |     |        |         |
+|    add_ln553_fu_131_p2                | -   |        | add_ln553      | add | fabric | 0       |
+|  + huffman_Pipeline_VITIS_LOOP_27_1   | 0   |        |                |     |        |         |
+|    add_ln27_1_fu_301_p2               | -   |        | add_ln27_1     | add | fabric | 0       |
+|    tree_count_V_6_fu_358_p2           | -   |        | tree_count_V_6 | add | fabric | 0       |
+|    in_count_V_6_fu_364_p2             | -   |        | in_count_V_6   | add | fabric | 0       |
+|    add_ln223_1_fu_414_p2              | -   |        | add_ln223_1    | add | fabric | 0       |
+|    tree_count_V_7_fu_426_p2           | -   |        | tree_count_V_7 | add | fabric | 0       |
+|    add_ln223_fu_420_p2                | -   |        | add_ln223      | add | fabric | 0       |
+|    in_count_V_7_fu_433_p2             | -   |        | in_count_V_7   | add | fabric | 0       |
+|  + huffman_Pipeline_traverse_tree     | 0   |        |                |     |        |         |
+|    length_V_fu_251_p2                 | -   |        | length_V       | add | fabric | 0       |
+|    count_V_1_fu_270_p2                | -   |        | count_V_1      | add | fabric | 0       |
+|    add_ln260_1_fu_200_p2              | -   |        | add_ln260_1    | add | fabric | 0       |
+|  + huffman_Pipeline_copy_input        | 0   |        |                |     |        |         |
+|    add_ln309_fu_75_p2                 | -   |        | add_ln309      | add | fabric | 0       |
+|  + huffman_Pipeline_copy_output       | 0   |        |                |     |        |         |
+|    add_ln366_fu_75_p2                 | -   |        | add_ln366      | add | fabric | 0       |
+|  + huffman_Pipeline_init_bits         | 0   |        |                |     |        |         |
+|    add_ln392_fu_62_p2                 | -   |        | add_ln392      | add | fabric | 0       |
+|  + huffman_Pipeline_VITIS_LOOP_332_1  | 0   |        |                |     |        |         |
+|    j_V_2_fu_55_p2                     | -   |        | j_V_2          | add | fabric | 0       |
+|  + huffman_Pipeline_VITIS_LOOP_413_1  | 0   |        |                |     |        |         |
+|    length_V_3_fu_67_p2                | -   |        | length_V_3     | add | fabric | 0       |
+|  + huffman_Pipeline_first_codewords   | 0   |        |                |     |        |         |
+|    add_ln453_fu_89_p2                 | -   |        | add_ln453      | add | fabric | 0       |
+|    add_ln223_fu_122_p2                | -   |        | add_ln223      | add | fabric | 0       |
+|    add_ln449_fu_100_p2                | -   |        | add_ln449      | add | fabric | 0       |
+|  + huffman_Pipeline_assign_codewords  | 0   |        |                |     |        |         |
+|    add_ln462_fu_108_p2                | -   |        | add_ln462      | add | fabric | 0       |
+|    ret_fu_134_p2                      | -   |        | ret            | sub | fabric | 0       |
+|    sub_ln599_fu_164_p2                | -   |        | sub_ln599      | sub | fabric | 0       |
+|    first_codeword_V_d0                | -   |        | add_ln885      | add | fabric | 0       |
++---------------------------------------+-----+--------+----------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
++-------------------------------------+------+------+--------+---------------------------------+---------+------+---------+
+| Name                                | BRAM | URAM | Pragma | Variable                        | Storage | Impl | Latency |
++-------------------------------------+------+------+--------+---------------------------------+---------+------+---------+
+| + huffman                           | 20   | 0    |        |                                 |         |      |         |
+|   first_codeword_V_U                | -    | -    |        | first_codeword_V                | ram_1p  | auto | 1       |
+|   child_depth_V_U                   | 1    | -    |        | child_depth_V                   | ram_1p  | auto | 1       |
+|   internal_length_histogram_V_U     | -    | -    |        | internal_length_histogram_V     | ram_1p  | auto | 1       |
+|   filtered_value_V_U                | 1    | -    |        | filtered_value_V                | ram_1p  | auto | 1       |
+|   filtered_frequency_V_U            | 1    | -    |        | filtered_frequency_V            | ram_1p  | auto | 1       |
+|   sorted_0_U                        | 1    | -    |        | sorted_0                        | ram_1p  | auto | 1       |
+|   sorted_1_U                        | 1    | -    |        | sorted_1                        | ram_1p  | auto | 1       |
+|   sorted_copy1_value_V_U            | 1    | -    |        | sorted_copy1_value_V            | ram_1p  | auto | 1       |
+|   sorted_copy1_frequency_V_U        | 1    | -    |        | sorted_copy1_frequency_V        | ram_1p  | auto | 1       |
+|   sorted_copy2_value_V_U            | 1    | -    |        | sorted_copy2_value_V            | ram_1p  | auto | 1       |
+|   symbol_histogram_value_V_47_U     | 1    | -    |        | symbol_histogram_value_V_47     | ram_1p  | auto | 1       |
+|   symbol_histogram_frequency_V_48_U | 1    | -    |        | symbol_histogram_frequency_V_48 | ram_1p  | auto | 1       |
+|   parent_V_U                        | 1    | -    |        | parent_V                        | ram_1p  | auto | 1       |
+|   left_V_U                          | 1    | -    |        | left_V                          | ram_1p  | auto | 1       |
+|   right_V_U                         | 1    | -    |        | right_V                         | ram_1p  | auto | 1       |
+|   length_histogram_V_U              | -    | -    |        | length_histogram_V              | ram_1p  | auto | 1       |
+|   truncated_length_histogram1_V_U   | -    | -    |        | truncated_length_histogram1_V   | ram_t2p | auto | 1       |
+|   truncated_length_histogram2_V_U   | -    | -    |        | truncated_length_histogram2_V   | ram_1p  | auto | 1       |
+|   symbol_bits_V_U                   | 1    | -    |        | symbol_bits_V                   | ram_1p  | auto | 1       |
+|  + sort                             | 5    | 0    |        |                                 |         |      |         |
+|    previous_sorting_value_V_U       | 1    | -    |        | previous_sorting_value_V        | ram_1p  | auto | 1       |
+|    previous_sorting_frequency_V_U   | 1    | -    |        | previous_sorting_frequency_V    | ram_1p  | auto | 1       |
+|    sorting_value_V_U                | 1    | -    |        | sorting_value_V                 | ram_1p  | auto | 1       |
+|    sorting_frequency_V_U            | 1    | -    |        | sorting_frequency_V             | ram_1p  | auto | 1       |
+|    current_digit_V_U                | 1    | -    |        | current_digit_V                 | ram_1p  | auto | 1       |
+|  + huffman_Pipeline_VITIS_LOOP_27_1 | 1    | 0    |        |                                 |         |      |         |
+|    frequency_V_U                    | 1    | -    |        | frequency_V                     | ram_1p  | auto | 1       |
++-------------------------------------+------+------+--------+---------------------------------+---------+------+---------+
+
+
+================================================================
+== User Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| Type            | Options                                              | Location                                                                                                           |
++-----------------+------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| pipeline        | II=5                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:29 in create_tree                            |
+| inline          | off                                                  | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:120 in filter                                |
+| pipeline        | II=1                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:126 in filter                                |
+| array_partition | variable=digit_location complete dim=1               | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:153 in sort, digit_location                  |
+| array_partition | variable=digit_histogram complete dim=1              | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:155 in sort, digit_histogram                 |
+| pipeline        | II=1                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:167 in sort                                  |
+| pipeline        | II=1                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:180 in sort                                  |
+| pipeline        | II=1                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:189 in sort                                  |
+| pipeline        | II=1                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:206 in sort                                  |
+| pipeline        | II=1                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:214 in sort                                  |
+| pipeline        | II=1                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:251 in compute_bit_length                    |
+| pipeline        | II=3                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:262 in compute_bit_length                    |
+| loop_tripcount  | min=3 max=3 avg=3                                    | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:326 in truncate_tree                         |
+| loop_tripcount  | min=1 max=1 avg=1                                    | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:334 in truncate_tree                         |
+| loop_tripcount  | min=1 avg=1 max=2                                    | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:415 in canonize_tree                         |
+| pipeline        | II=1                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:451 in create_codeword                       |
+| pipeline        | II=5                                                 | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:464 in create_codeword                       |
+| interface       | axis register both port=num_nonzero_symbols          | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:506 in huffman, num_nonzero_symbols          |
+| interface       | axis register both port=encoding                     | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:507 in huffman, encoding                     |
+| interface       | axis register both port=symbol_histogram_value_V     | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:508 in huffman, symbol_histogram_value_V     |
+| interface       | axis register both port=symbol_histogram_frequency_V | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:509 in huffman, symbol_histogram_frequency_V |
+| interface       | ap_ctrl_none port=return                             | D:/Downloads/pynq_z2_v2.6.0/pp4fpgas-cn-hls/hw/ip/huffman/huffman.cpp:510 in huffman, return                       |
++-----------------+------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+
+
