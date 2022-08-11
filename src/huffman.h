@@ -50,6 +50,18 @@ struct Symbol {
 
 };
 
+void huffman(
+
+    /* input */
+
+	 ap_uint<SYMBOL_BITS> symbol_histogram_value_V[INPUT_SYMBOL_SIZE],
+
+	 ap_uint<32> symbol_histogram_frequency_V[INPUT_SYMBOL_SIZE],
+
+    /* output */ PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE],
+
+    /* output */ int *num_nonzero_symbols);
+
 
 const unsigned int RADIX = 16;
 
