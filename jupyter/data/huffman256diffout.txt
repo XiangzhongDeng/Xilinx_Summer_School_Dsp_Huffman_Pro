@@ -1,8 +1,0 @@
-0, ffff0
-23, 7ffef
-24, 1ffee
-59, 2ffed
-64, 5ffee
-156, 17fec
-182, 1ffff0
-189, 3ffee
